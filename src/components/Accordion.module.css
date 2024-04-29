@@ -1,0 +1,45 @@
+.section {
+  width: 100%;
+}
+
+.item {
+  border-bottom: 1px solid lightgray;
+  padding: 1rem;
+}
+
+.item-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.arrow {
+  transition: all 0.2s linear;
+}
+
+/* 메뉴 오픈상태 */
+.arrow-up {
+  transform: rotate(180deg);
+  transition: all 0.2s linear;
+}
+
+.item-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.1s linear;
+}
+
+.item-open {
+  max-height: 65px;
+  transition: max-height 0.2s linear;
+}
