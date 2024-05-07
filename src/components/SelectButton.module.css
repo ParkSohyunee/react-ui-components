@@ -1,0 +1,20 @@
+.button {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  width: 180px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid lightgray;
+  font-size: 0.875rem;
+  background: white;
+  cursor: pointer;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  transform: rotate(180deg);
+}
