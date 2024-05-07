@@ -10,11 +10,7 @@ export const AccordianContext = createContext<AccordianContextType>({
   toggleAccordian: (index: number) => {},
 });
 
-export const AccordianProvider = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => {
+export const AccordianProvider = ({ children }: { children: React.ReactNode }) => {
   // 현재 열려있는 아코디언 메뉴 인덱스
   const [selectedIndex, setSelectedIndex] = useState<null | number>(null);
 

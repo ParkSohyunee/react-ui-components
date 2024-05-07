@@ -38,9 +38,7 @@ function AccordianItem({ index, data }: AccordianItemProps) {
           className={selectedIndex === index ? style[`arrow-up`] : style.arrow}
         />
       </div>
-      <p className={classNames(style[`item-content`], itemActiveStyle)}>
-        {data.contents}
-      </p>
+      <p className={classNames(style[`item-content`], itemActiveStyle)}>{data.contents}</p>
     </li>
   );
 }
