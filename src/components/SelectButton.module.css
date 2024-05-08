@@ -1,10 +1,18 @@
 /* SelectMenu */
 .container {
+  position: absolute;
+  top: 50px;
+  opacity: 0;
   padding: 0.5rem 0.25rem;
   border-radius: 0.5rem;
   width: 172px;
   font-size: 1rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: opacity 0.1s linear;
+}
+
+.visible {
+  opacity: 1;
 }
 
 .item {
@@ -17,6 +25,10 @@
 }
 
 /* SelectButton */
+.wrapper {
+  position: relative;
+}
+
 .button {
   padding: 0.75rem;
   border-radius: 0.5rem;
