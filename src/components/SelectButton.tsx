@@ -15,10 +15,12 @@ const DEFAULT_VALUE = "Fruits";
 
 function SelectMenu({ isOpen, setIsOpen, selected, setSelected }: SelectMenuProps) {
   const handleSelectItem = (e: MouseEvent<HTMLUListElement>) => {
-    // 메뉴가 열려있고, list를 선택했으면 selected를 그 id로 변경
-    if (isOpen && e.currentTarget !== e.target) {
-      setSelected((e.target as HTMLLIElement).id);
+    const id = (e.target as HTMLLIElement).id;
+
+    // 메뉴가 열려있고, id가 있고, list를 선택했으면 selected를 그 id로 변경
+    if (isOpen && e.currentTarget !== e.target && id) {
       setIsOpen(false);
+      setSelected(id);
     }
   };
 
@@ -27,8 +29,14 @@ function SelectMenu({ isOpen, setIsOpen, selected, setSelected }: SelectMenuProp
       className={classNames(styles.container, isOpen ? styles.visible : "")}
       onClick={handleSelectItem}
     >
-      {[DEFAULT_VALUE, ...fruits].map((fruit) => (
+      <li className={styles.default}>{DEFAULT_VALUE}</li>
+      {fruits.map((fruit) => (
         <li key={fruit} className={styles.item} id={fruit}>
+          {fruit === selected ? (
+            <img src="/icon/check.svg" alt="선택한 메뉴" className={styles.check} />
+          ) : (
+            <span className={styles.check}></span>
+          )}
           {fruit}
         </li>
       ))}
