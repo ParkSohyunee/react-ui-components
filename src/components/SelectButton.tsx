@@ -1,25 +1,33 @@
-import { Dispatch, MouseEvent, SetStateAction, useEffect, useRef, useState } from "react";
+/**
+ * @TODO
+ * [x] 커스텀 훅 분리
+ * [ ] select 태그로 변경
+ * [ ] 애니메이션 등 css 자연스럽게 수정
+ */
+
+import { Dispatch, MouseEvent, SetStateAction, useRef, useState } from "react";
 import classNames from "classnames";
 
 import { fruits } from "mock-datas/data";
 import styles from "./SelectButton.module.css";
+import { useDetectClose } from "hooks/useOutsideClickHandler";
 
 interface SelectMenuProps {
   isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  toggleHandler: () => void;
   selected: string;
   setSelected: Dispatch<SetStateAction<string>>;
 }
 
 const DEFAULT_VALUE = "Fruits";
 
-function SelectMenu({ isOpen, setIsOpen, selected, setSelected }: SelectMenuProps) {
+function SelectMenu({ isOpen, toggleHandler, selected, setSelected }: SelectMenuProps) {
   const handleSelectItem = (e: MouseEvent<HTMLUListElement>) => {
     const id = (e.target as HTMLLIElement).id;
 
     // 메뉴가 열려있고, id가 있고, list를 선택했으면 selected를 그 id로 변경
     if (isOpen && e.currentTarget !== e.target && id) {
-      setIsOpen(false);
+      toggleHandler();
       setSelected(id);
     }
   };
@@ -46,39 +54,18 @@ function SelectMenu({ isOpen, setIsOpen, selected, setSelected }: SelectMenuProp
 
 export default function SelectButton() {
   const ref = useRef<HTMLDivElement>(null);
-  const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState("");
-
-  const toggleModal = () => {
-    setIsOpen((prev) => !prev);
-  };
-
-  // 셀렉트 메뉴 이외의 공간 클릭 감지
-  useEffect(() => {
-    const onClick = (e: Event) => {
-      if (ref.current !== null && !ref.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      window.addEventListener("click", onClick);
-    }
-
-    return () => {
-      window.addEventListener("click", onClick);
-    };
-  }, [isOpen]);
+  const { ref: currentRef, isOpen, toggleHandler } = useDetectClose({ ref });
 
   return (
-    <div ref={ref} className={styles.wrapper}>
-      <button onClick={toggleModal} className={styles.button}>
+    <div ref={currentRef} className={styles.wrapper}>
+      <button onClick={toggleHandler} className={styles.button}>
         <span>{selected ? selected : "Select a fruit"}</span>
         <img className={styles.icon} src="/icon/arrow_up.svg" alt="메뉴 보기" />
       </button>
       <SelectMenu
         isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        toggleHandler={toggleHandler}
         selected={selected}
         setSelected={setSelected}
       />
