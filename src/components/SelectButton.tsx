@@ -1,10 +1,3 @@
-/**
- * @TODO
- * [x] 커스텀 훅 분리
- * [ ] select 태그로 변경
- * [ ] 애니메이션 등 css 자연스럽게 수정
- */
-
 import { Dispatch, MouseEvent, SetStateAction, useRef, useState } from "react";
 import classNames from "classnames";
 
