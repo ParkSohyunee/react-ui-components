@@ -3,7 +3,7 @@ import classNames from "classnames";
 
 import { fruits } from "mock-datas/data";
 import styles from "./SelectButton.module.css";
-import { useDetectClose } from "hooks/useOutsideClickHandler";
+import { useDetectClose } from "hooks/useDetectClose";
 
 interface SelectMenuProps {
   isOpen: boolean;
