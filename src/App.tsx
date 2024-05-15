@@ -1,12 +1,11 @@
-import { AccordianProvider } from "context/AccordionContext";
-import AccordionContainer from "components/Accordion";
+import styles from "./App.module.css";
+
+import SelectButton from "components/SelectButton";
 
 function App() {
   return (
-    <div>
-      <AccordianProvider>
-        <AccordionContainer />
-      </AccordianProvider>
+    <div className={styles.container}>
+      <SelectButton />
     </div>
   );
 }

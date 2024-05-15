@@ -1,0 +1,66 @@
+/* SelectMenu */
+.container {
+  position: absolute;
+  top: 50px;
+  opacity: 0;
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.5rem;
+  width: 172px;
+  font-size: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: opacity 0.2s linear;
+}
+
+.visible {
+  opacity: 1;
+}
+
+.item {
+  padding: 0.5rem 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 5px;
+  cursor: default;
+  &:hover {
+    background: #fafafa;
+  }
+}
+
+.default {
+  padding: 0.5rem 2.3rem;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: text;
+}
+
+.check {
+  width: 19px;
+  height: 19px;
+}
+
+/* SelectButton */
+.wrapper {
+  position: relative;
+}
+
+.button {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  width: 180px;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid lightgray;
+  font-size: 0.875rem;
+  background: white;
+  cursor: pointer;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  transform: rotate(180deg);
+}
